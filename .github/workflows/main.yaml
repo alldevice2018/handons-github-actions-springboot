@@ -22,12 +22,12 @@ jobs:
           java-version: 17
 
       - name: Unit Tests
-        run: mnv -B test --file pom.xml
+        run: mvn -B test --file pom.xml
       # if you have several steps of unit test, use the pipe like
       #       - name: Unit Tests
       #         run: |
       #         mvn clean
-      #         mnv -B test --file pom.xml
+      #         mvn -B test --file pom.xml
 
       - name: Build the appllication
         run: |
