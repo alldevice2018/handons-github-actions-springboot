@@ -40,7 +40,7 @@ jobs:
           context: .
           dockfile: Dockerfile
           push: false #true it a test, we'll push it later
-          tags: $ {{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-for-beginners:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-for-beginners:latest
           # or tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-for-beginners:today
           # or tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-for-beginners:$(date-'%Y-%m-%d-%H-%M-%S') to get a date including hour, minutes, seconds
 
@@ -54,4 +54,4 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: $ {{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-for-beginners:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-for-beginners:latest
