@@ -35,7 +35,7 @@ jobs:
           mvn -B package --file pom.xml
 
       - name: Build Docker Image
-        uses: actions/build-push-action@v2
+        uses: docker/build-push-action@v6 # docker/build-push-action@v2
         with:
           context: .
           dockfile: Dockerfile
@@ -45,13 +45,13 @@ jobs:
           # or tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-for-beginners:$(date-'%Y-%m-%d-%H-%M-%S') to get a date including hour, minutes, seconds
 
       - name: Login to Dcoker Hub
-        uses: docker/login-action@v1
+        uses: docker/login-action@v3
         with:
           username: $ {{ secrets.DOCKER_HUB_USERNAME }}
           password: $ {{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
       - name: Push to Dcoker Hub
-        uses: docker/push-action@v1
+        uses: docker/push-action@v6
         with:
           push: true
           tags: $ {{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-for-beginners:$(date-'%Y-%m-%d-%H-%M-%S')
