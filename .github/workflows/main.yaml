@@ -55,3 +55,4 @@ jobs:
         with:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-for-beginners:latest
+## ALWAYS GO BACK CON GITHUB MARKETPLACE TO CHECK THE "uses", (newer versions of actions)
