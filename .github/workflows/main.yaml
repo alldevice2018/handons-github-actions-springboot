@@ -35,7 +35,7 @@ jobs:
           mvn -B package --file pom.xml
 
       - name: Build Docker Image
-        uses: docker/build-push-action@v6 # docker/build-push-action@v2
+        uses: docker/build-push-action@v6
         with:
           context: .
           dockfile: Dockerfile
@@ -51,7 +51,7 @@ jobs:
           password: $ {{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
       - name: Push to Dcoker Hub
-        uses: docker/push-action@v6
+        uses: docker/build-push-action@v6
         with:
           push: true
           tags: $ {{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-for-beginners:$(date-'%Y-%m-%d-%H-%M-%S')
