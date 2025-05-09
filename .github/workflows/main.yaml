@@ -1,0 +1,35 @@
+name: Build & deploy spring app
+
+on:
+  push:
+    branches:
+      - main
+      # paths:
+      #   -
+
+jobs:
+  build-deploy:
+    name: Build and Deploy spring boot for beginner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v17
+        with:
+          distribution: "corretto"
+          java-version: "17"
+
+      - name: Unit Tests
+        run: mnv -B test --file pom.xml
+      # if you have several steps of unit test, use the pipe like
+      #       - name: Unit Tests
+      #         run: |
+      #         mvn clean
+      #         mnv -B test --file pom.xml
+
+      - name: Build the appllication
+        run: |
+          mvn clean
+          mvn -B package --file pom.xml
